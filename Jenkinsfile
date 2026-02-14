@@ -1,35 +1,19 @@
-pipeline {
-    agent any
+node {
 
-    triggers {
-        pollSCM('H/2 * * * *')
+    stage('Clone Repository') {
+        echo "Cloning repository..."
     }
 
-    stages {
+    stage('Build') {
+        echo "Building project..."
+    }
 
-        stage('Clone Repository') {
-            steps {
-                echo "Cloning repository..."
-            }
-        }
+    stage('Echo Build Status') {
+        echo "Build successful!"
+    }
 
-        stage('Build') {
-            steps {
-                echo "Building project..."
-            }
-        }
-
-        stage('Echo Build Status') {
-            steps {
-                echo "Build completed successfully!"
-            }
-        }
-
-        stage('Archive Artifacts') {
-            steps {
-                archiveArtifacts artifacts: '**/*.*', fingerprint: true
-            }
-        }
+    stage('Archive Artifacts') {
+        archiveArtifacts artifacts: '**/*.*', fingerprint: true
     }
 }
 
