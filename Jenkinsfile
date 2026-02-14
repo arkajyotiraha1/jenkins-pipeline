@@ -11,9 +11,5 @@ node {
     stage('Echo Build Status') {
         echo "Build successful!"
     }
-
-    stage('Archive Artifacts') {
-        archiveArtifacts artifacts: '**/*.*', fingerprint: true
-    }
 }
 
