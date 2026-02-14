@@ -25,11 +25,6 @@ pipeline {
             }
         }
 
-        stage('Archive Artifacts') {
-            steps {
-                archiveArtifacts artifacts: '**/*.*', fingerprint: true
-            }
-        }
     }
 }
 
